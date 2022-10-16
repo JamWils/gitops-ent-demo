@@ -1,0 +1,45 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  creationTimestamp: "2022-10-15T20:56:08Z"
+  finalizers:
+  - finalizers.fluxcd.io
+  generation: 1
+  labels:
+    kustomize.toolkit.fluxcd.io/name: dev-ks
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
+  name: weave-gitops-enterprise-charts
+  namespace: flux-system
+  resourceVersion: "1293"
+  uid: e12c0ee1-a676-4d2d-beba-dd2114335192
+spec:
+  interval: 60m
+  provider: generic
+  secretRef:
+    name: weave-gitops-enterprise-credentials
+  timeout: 60s
+  url: https://charts.dev.wkp.weave.works/releases/charts-v3
+status:
+  conditions:
+  - lastTransitionTime: "2022-10-15T20:56:09Z"
+    message: no artifact for resource in storage
+    observedGeneration: 1
+    reason: NoArtifact
+    status: "True"
+    type: Reconciling
+  - lastTransitionTime: "2022-10-15T20:56:09Z"
+    message: 'failed to get secret ''flux-system/weave-gitops-enterprise-credentials'':
+      Secret "weave-gitops-enterprise-credentials" not found'
+    observedGeneration: 1
+    reason: AuthenticationFailed
+    status: "False"
+    type: Ready
+  - lastTransitionTime: "2022-10-15T20:56:09Z"
+    message: 'failed to get secret ''flux-system/weave-gitops-enterprise-credentials'':
+      Secret "weave-gitops-enterprise-credentials" not found'
+    observedGeneration: 1
+    reason: AuthenticationFailed
+    status: "True"
+    type: FetchFailed
+  observedGeneration: -1
