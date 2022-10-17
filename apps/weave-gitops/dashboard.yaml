@@ -41,8 +41,8 @@ spec:
       capi:
         repositoryURL: https://github.com/JamWils/gitops-ent-demo
         # -- Can be changed depending on your git repo structure
-        # repositoryPath: ./clusters/management/clusters
-        # repositoryClustersPath: ./cluster
+        repositoryPath: ./clusters/clusters
+        repositoryClustersPath: ./clusters
       git:
         type: github
         # -- Change if using on-prem github/gitlab
@@ -51,5 +51,3 @@ spec:
         enabled: true
         accountId: test-id-123
         clusterId: cluster-id-123
-    rbac:
-      additionalRules: true
