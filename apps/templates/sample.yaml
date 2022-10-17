@@ -1,5 +1,5 @@
-apiVersion: capi.weave.works/v1alpha1
-kind: CAPITemplate
+apiVersion: clustertemplates.weave.works/v1alpha1
+kind: GitOpsTemplate
 metadata:
   name: vcluster-template
   namespace: default

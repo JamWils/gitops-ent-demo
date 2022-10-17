@@ -51,3 +51,5 @@ spec:
         enabled: true
         accountId: test-id-123
         clusterId: cluster-id-123
+    rbac:
+      additionalRules: true
