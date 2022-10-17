@@ -10,6 +10,16 @@ spec:
       description: This is used for naming the cluster.
   resourcetemplates:
     # Template objects go here
+    - apiVersion: gitops.weave.works/v1alpha1
+      kind: GitopsCluster
+      metadata:
+        name: "${CLUSTER_NAME}"
+        namespace: vcluster
+        labels:
+          weave.works/capi: bootstrap
+      spec:
+        capiClusterRef:
+          name: "${CLUSTER_NAME}"
     - apiVersion: cluster.x-k8s.io/v1beta1
       kind: Cluster
       metadata:
@@ -19,11 +29,11 @@ spec:
         controlPlaneRef:
           apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
           kind: VCluster
-          name: vcluster
+          name: ${CLUSTER_NAME}
         infrastructureRef:
           apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
           kind: VCluster
-          name: vcluster
+          name: ${CLUSTER_NAME}
     - apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
       kind: VCluster
       metadata:
