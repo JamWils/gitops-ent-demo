@@ -1,0 +1,42 @@
+apiVersion: capi.weave.works/v1alpha1
+kind: CAPITemplate
+metadata:
+  name: vcluster-template
+  namespace: default
+spec:
+  description: This template makes it easy to create a vCluster using CAPI.
+  params:
+    - name: CLUSTER_NAME
+      description: This is used for naming the cluster.
+  resourcetemplates:
+    # Template objects go here
+    - apiVersion: cluster.x-k8s.io/v1beta1
+      kind: Cluster
+      metadata:
+        name: ${CLUSTER_NAME}
+        namespace: vcluster
+      spec:
+        controlPlaneRef:
+          apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+          kind: VCluster
+          name: vcluster
+        infrastructureRef:
+          apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+          kind: VCluster
+          name: vcluster
+    - apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+      kind: VCluster
+      metadata:
+        name: ${CLUSTER_NAME}
+        namespace: vcluster
+      spec:
+        controlPlaneEndpoint:
+          host: ""
+          port: 0
+        helmRelease:
+          chart:
+            name: null
+            repo: null
+            version: null
+          values: ""
+        kubernetesVersion: v1.25.1
