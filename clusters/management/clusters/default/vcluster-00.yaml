@@ -1,0 +1,50 @@
+apiVersion: gitops.weave.works/v1alpha1
+kind: GitopsCluster
+metadata:
+  annotations:
+    templates.weave.works/create-request: '{"head_branch":"create-clusters-branch-1s3zs2","title":"Creates
+      cluster vcluster-00","description":"This PR creates a new cluster","template_name":"vcluster-template","parameter_values":{"CLUSTER_NAME":"vcluster-00"},"commit_message":"Creates
+      capi cluster","credentials":{}}'
+  labels:
+    weave.works/capi: bootstrap
+  name: vcluster-00
+  namespace: vcluster
+spec:
+  capiClusterRef:
+    name: vcluster-00
+
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: vcluster-00
+  namespace: vcluster
+spec:
+  controlPlaneRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: VCluster
+    name: vcluster-00
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: VCluster
+    name: vcluster-00
+
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: VCluster
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+  name: vcluster-00
+  namespace: vcluster
+spec:
+  controlPlaneEndpoint:
+    host: ""
+    port: 0
+  helmRelease:
+    chart:
+      name: null
+      repo: null
+      version: null
+    values: ""
+  kubernetesVersion: v1.25.1
