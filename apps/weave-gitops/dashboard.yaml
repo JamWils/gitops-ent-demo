@@ -39,7 +39,7 @@ spec:
       # secretName: null
     config:
       capi:
-        repositoryURL: https://github.com/$GITHUB_USER/fleet-infra
+        repositoryURL: https://github.com/JamWils/gitops-ent-demo
         # -- Can be changed depending on your git repo structure
         # repositoryPath: ./clusters/management/clusters
         # repositoryClustersPath: ./cluster
