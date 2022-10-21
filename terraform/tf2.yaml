@@ -1,0 +1,14 @@
+---
+apiVersion: infra.contrib.fluxcd.io/v1alpha1
+kind: Terraform
+metadata:
+  name: cloud-infra
+  namespace: flux-system
+spec:
+  interval: 1m
+  approvePlan: manual
+  path: ./terraform/gcloud
+  sourceRef:
+    kind: Bucket
+    name: flux-system
+    namespace: flux-system
