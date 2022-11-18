@@ -18,13 +18,13 @@ metadata:
 spec:
   chart:
     spec:
-      interval: 65m
+      interval: 5m
       chart: mccp
       sourceRef:
         kind: HelmRepository
         name: weave-gitops-enterprise-charts
         namespace: flux-system
-      version: 0.10.0-rc.1
+      version: 0.10.2
   install:
     crds: CreateReplace
   upgrade:
